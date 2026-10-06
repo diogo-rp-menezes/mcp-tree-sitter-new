@@ -1,0 +1,35 @@
+# CODEOWNERS - Define code owners for this repository
+# These users/teams will be automatically requested for review when PRs modify matching files
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global owners - all files
+* @diogocavilha
+
+# Server (TypeScript)
+/src/server/ @diogocavilha
+/server.ts @diogocavilha
+/tests/ @diogocavilha
+/pyproject.toml @diogocavilha
+/uv.lock @diogocavilha
+/*.py @diogocavilha
+
+# TypeScript / Vite frontend
+/src/client/ @diogocavilha
+/vite.config.ts @diogocavilha
+/tsconfig*.json @diogocavilha
+/package.json @diogocavilha
+/bun.lock @diogocavilha
+/*.ts @diogocavilha
+/*.tsx @diogocavilha
+
+# Configuration & CI/CD
+/.github/ @diogocavilha
+/.gitignore @diogocavilha
+/.gitattributes @diogocavilha
+/Makefile @diogocavilha
+
+# Documentation
+/docs/ @diogocavilha
+/README.md @diogocavilha
+/CHANGELOG.md @diogocavilha
+/CONTRIBUTING.md @diogocavilha

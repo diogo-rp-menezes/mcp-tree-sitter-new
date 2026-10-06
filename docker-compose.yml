@@ -1,0 +1,27 @@
+services:
+  mcp-treesitter:
+    build: .
+    image: mcp-treesitter:local
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      # Obrigatório: o servidor não sobe sem pelo menos um validador de credencial.
+      MCP_API_KEYS: ${MCP_API_KEYS:?defina MCP_API_KEYS no .env ou no ambiente}
+      MCP_CORS_ORIGINS: ${MCP_CORS_ORIGINS:-http://localhost:3000}
+      MCP_MAX_PROJECT_MB: ${MCP_MAX_PROJECT_MB:-200}
+      MCP_MAX_TOTAL_MB: ${MCP_MAX_TOTAL_MB:-1024}
+    volumes:
+      - mcp-data:/app/data
+      # Opcional: monte código do host para o scan-directory (somente leitura).
+      # - /caminho/do/seu/codigo:/workspace:ro
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  mcp-data:
